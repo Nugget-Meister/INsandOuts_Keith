@@ -161,5 +161,8 @@ void nugget(){
   c = random(variance)+(width/2)-(variance/2);
   d = random(variance)+(height/2)-(variance/2);
   image(nugget,c,d);
+  textSize(32);
+  textAlign(CENTER);
+  text("nugget",c,d+200);
 
   }

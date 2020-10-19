@@ -3,7 +3,7 @@
 int state = 0;
 
 //Sketch Variables
-//--Sketch 1 Delayed Color
+//--Sketch 1 Delayed Color (Variables)
     float colorA = 0;
     float colorB = 0;
     float colorC = 0;
@@ -12,7 +12,9 @@ int state = 0;
     int delayCut = 30;
     boolean isDisplay;
     
+//--Sketch 2 [Placeholder]
 
+//--Sketch
 
 
 
@@ -87,24 +89,17 @@ void button(int x,int y,int w,int h,int fill,String text){
 
 //---------------------------------------------------
 
+
+// Setup Intermediary Screens
+
+
+
+
+
+//------------------------------------------
 void sketchA(){
   //Sketch 1 SS2_Delayed Color
-  
-  //exit button
-  if(mouseX > 20  && mouseX < 20+50 && mouseY > 20 && mouseY < 20+50){
-         
-         if(mouseX > 20  && mouseX < 20+50 && mouseY > 20 && mouseY < 20+50 && mousePressed){
-            //Button Pressed
-                  button(20,20,50,50,100,"x");
-                  state = 0;
-                  
-            //if highlighted
-            }else{button(20,20,50,50,150,"x");}  
-            
-            //Otherwise
-            }else{button(20,20,50,50,255,"x");}
-            
-            
+           
   //------------
   
   //shorten mousex and y for easier reference
@@ -162,11 +157,35 @@ void sketchA(){
               }else{isDisplay = false;}   
             }else{isDisplay = false;} 
   
-            
+     //exit button
+      if(mouseX > 20  && mouseX < 20+50 && mouseY > 20 && mouseY < 20+50){
+             
+             if(mouseX > 20  && mouseX < 20+50 && mouseY > 20 && mouseY < 20+50 && mousePressed){
+                //Button Pressed
+                      button(20,20,50,50,100,"x");
+                      state = 0;
+                      
+                //if highlighted
+                }else{button(20,20,50,50,150,"x");}  
+                
+                //Otherwise
+                }else{button(20,20,50,50,255,"x");}           
   
   
  
 }
+
+//------------------------------------------
+
+void SketchB(){
+//--Sketch 2
+
+
+}
+
+//------------------------------------------
+
+void SketchC(){}
 
 
 

@@ -2,6 +2,7 @@
 //Variables
 int state = 0;
 
+
 //Sketch Variables
 //--Sketch 1 Delayed Color (Variables)
     float colorA = 0;
@@ -14,7 +15,7 @@ int state = 0;
     
 //--Sketch 2 [Placeholder]
 
-//--Sketch
+//--Sketch 3 [Placeholder]
 
 
 
@@ -43,35 +44,55 @@ void draw(){
 void menu()
 {
     
-//Button 1
+  textAlign(RIGHT);
+  fill(200,200,0);
+  text("Keith Camacho",width-20,50);
+  text("Short Study Compilation",width-20,75);
+  
+//--Button 1
         // button((width/2)-100,200,200,50,255);
     if(mouseX > (width/2)-100  && mouseX < ((width/2)-100)+200 && mouseY > 200 && mouseY < 200+50 ){
          
          if(mouseX > ((width/2)-100) && mouseX < ((width/2)-100)+200 && mouseY > 200 && mouseY < 200+50 && mousePressed){
             //Button Pressed
-                  button((width/2)-100,200,200,50,100,"1");
+                  button((width/2)-100,200,200,50,100,"Sketch 1");
                   state = 1;
                   
             //if highlighted
-            }else{button((width/2)-100,200,200,50,150,"1");}  
+            }else{button((width/2)-100,200,200,50,150,"Sketch 1");}  
             
             //Otherwise
-            }else{button((width/2)-100,200,200,50,255,"1");}
+            }else{button((width/2)-100,200,200,50,255,"Sketch 1");}
     
-//Button 2
-    if(mouseX > (width/2)-100  && mouseX < ((width/2)-100)+200 && mouseY > 400 && mouseY < 400+50 ){
+//--Button 2
+    if(mouseX > (width/2)-100  && mouseX < ((width/2)-100)+200 && mouseY > 300 && mouseY < 300+50 ){
+         
+         if(mouseX > ((width/2)-100) && mouseX < ((width/2)-100)+200 && mouseY > 300 && mouseY < 300+50 && mousePressed){
+            //Button Pressed
+                  button((width/2)-100,300,200,50,100,"Sketch 2");
+                  
+            //if highlighted
+            }else{button((width/2)-100,300,200,50,150,"Sketch 2");}  
+            
+            //Otherwise
+            }else{button((width/2)-100,300,200,50,255,"Sketch 2");}
+          
+
+           
+//--Button 3
+     if(mouseX > (width/2)-100  && mouseX < ((width/2)-100)+200 && mouseY > 400 && mouseY < 400+50 ){
          
          if(mouseX > ((width/2)-100) && mouseX < ((width/2)-100)+200 && mouseY > 400 && mouseY < 400+50 && mousePressed){
             //Button Pressed
-                  button((width/2)-100,400,200,50,100,"2");
+                  button((width/2)-100,400,200,50,100,"Sketch 3");
                   
             //if highlighted
-            }else{button((width/2)-100,400,200,50,150,"2");}  
+            }else{button((width/2)-100,400,200,50,150,"Sketch 3");}  
             
             //Otherwise
-            }else{button((width/2)-100,400,200,50,255,"2");}
-          
-           
+            }else{button((width/2)-100,400,200,50,255,"Sketch 3");}
+
+
 }
 
 

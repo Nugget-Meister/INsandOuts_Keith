@@ -78,7 +78,8 @@ void draw() {
       rect(0, 600, 1080, 50);
     
      
-  nugget();
+ nugget();
+  
 }
 
 

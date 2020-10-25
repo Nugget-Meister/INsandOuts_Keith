@@ -13,7 +13,15 @@ int state = 0;
     int delayCut = 30;
     boolean isDisplay;
     
-//--Sketch 2 [Placeholder]
+//--Sketch 2 Insanity
+    int size = 310;
+    int add = 1;
+    int min = 60;
+    int max = 380;
+    int distanceLattice = 10;
+    int latticeWeight = 1;
+    int beginDie = 0;
+
 
 //--Sketch 3 [Placeholder]
 
@@ -34,6 +42,8 @@ void draw(){
   background(0);
   if(state == 0){menu();}
   if(state == 1){sketchA();}
+  if(state == 2){sketchB();}
+  if(state == 3){sketchC();}
 }
 
 
@@ -70,6 +80,7 @@ void menu()
          if(mouseX > ((width/2)-100) && mouseX < ((width/2)-100)+200 && mouseY > 300 && mouseY < 300+50 && mousePressed){
             //Button Pressed
                   button((width/2)-100,300,200,50,100,"Sketch 2");
+                  state = 2;
                   
             //if highlighted
             }else{button((width/2)-100,300,200,50,150,"Sketch 2");}  
@@ -85,6 +96,7 @@ void menu()
          if(mouseX > ((width/2)-100) && mouseX < ((width/2)-100)+200 && mouseY > 400 && mouseY < 400+50 && mousePressed){
             //Button Pressed
                   button((width/2)-100,400,200,50,100,"Sketch 3");
+                  state = 3;
                   
             //if highlighted
             }else{button((width/2)-100,400,200,50,150,"Sketch 3");}  
@@ -132,27 +144,27 @@ void sketchA(){
           background(55, 55, colorBack);
           
           
-          //positional based red boxes
-          fill(255,0,0);
-          if (x > 500){
-            if (y > 500){
-              rect(500,500,1000,1000);      
-            } else if (y < 500){
-              rect(500, 0, 500, 500);
-            }
-          } else{
-            if (y > 500){
-              rect(0, 500, 500, 1000);
-            } else {
-              rect(0, 0, 500, 500);
-            }
-          }
+          //---positional based red boxes
+                  fill(255,0,0);
+                  if (x > 500){
+                    if (y > 500){
+                      rect(500,500,1000,1000);      
+                    } else if (y < 500){
+                      rect(500, 0, 500, 500);
+                    }
+                  } else{
+                    if (y > 500){
+                      rect(0, 500, 500, 1000);
+                    } else {
+                      rect(0, 0, 500, 500);
+                    }
+                  }
             
             
             //randomize centered box color
-            if (delay < delayCut){
-            delay++;
-            }
+                  if (delay < delayCut){
+                  delay++;
+                  }
             if(mousePressed){
               if (delay == delayCut){
                 if (isDisplay){ 
@@ -178,7 +190,59 @@ void sketchA(){
               }else{isDisplay = false;}   
             }else{isDisplay = false;} 
   
-     //exit button
+           
+  
+  exitButton();
+ 
+}
+
+//------------------------------------------
+
+void sketchB(){
+//--Sketch 2 SS3_Insanity
+//press o/p to increase/decrease size of eyeball
+//press spacebar to initiate resonance cascade
+
+  ss2Draw();
+  exitButton();
+}
+
+//------------------------------------------
+
+void sketchC(){
+
+  exitButton();
+}
+
+
+
+
+
+
+
+
+
+
+//--Consolidated Commands
+
+void keyPressed(){
+  
+  //Check if Sketch 1
+  if(state == 1){if (keyCode == 32) {colorBack = random(100)+ 150;} else {colorBack = 255;}}
+ 
+  //Check if Sketch 2
+  if(state == 2){if (keyCode == 32) {if(beginDie == 0){beginDie = 1;} else{beginDie = 0;clear();}}
+  
+  //Check if Sketch 3
+  
+                 
+  }
+}
+
+}
+
+void exitButton(){
+//exit button
       if(mouseX > 20  && mouseX < 20+50 && mouseY > 20 && mouseY < 20+50){
              
              if(mouseX > 20  && mouseX < 20+50 && mouseY > 20 && mouseY < 20+50 && mousePressed){
@@ -190,34 +254,58 @@ void sketchA(){
                 }else{button(20,20,50,50,150,"x");}  
                 
                 //Otherwise
-                }else{button(20,20,50,50,255,"x");}           
-  
-  
- 
-}
-
-//------------------------------------------
-
-void SketchB(){
-//--Sketch 2
-
+                }else{button(20,20,50,50,255,"x");}     
 
 }
 
-//------------------------------------------
-
-void SketchC(){}
 
 
 
-// Used for Various Sketches
-void keyPressed(){
-  
-  //Check if Sketch 1
-  if(state == 1){if (keyCode == 32){colorBack = random(100)+ 150;} else {colorBack = 255;}}
-  
-  
-  //Placeholder for Sketch 2
-  
-  //Placeholder for Sketch 3
-}
+
+
+
+//------------------------------------
+
+
+
+
+//--Sketch Related Functions
+
+
+//Sketch 2
+
+    void ss2Draw(){
+    
+      
+      
+    }
+    
+
+    void lattice(){
+    
+      for (int i=0; i < width; i+=distanceLattice){    
+          stroke(random(20)+100,0,0);
+          strokeWeight(2+random(10));
+          line(i+random(20),0,i+random(20),height);
+          }
+      for (int i=0; i < height; i+=distanceLattice){
+         stroke(random(20)+100,0,0);
+         strokeWeight(2+random(10));
+         line(0,i+random(20),width,i+random(20));
+      }
+    }
+    
+    void increaseCircle(){
+      if (size > max)
+      {
+        add = -1;
+      }
+      if (size < min)
+      {
+        add = 1;
+      }
+      size = size + add;
+  }
+
+
+//--

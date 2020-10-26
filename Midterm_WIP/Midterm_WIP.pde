@@ -4,7 +4,7 @@ int state = 0;
 
 
 //Sketch Variables
-//--Sketch 1 Delayed Color (Variables)
+//--Sketch 1 [ Delayed Color ] 
     float colorA = 0;
     float colorB = 0;
     float colorC = 0;
@@ -13,17 +13,19 @@ int state = 0;
     int delayCut = 30;
     boolean isDisplay;
     
-//--Sketch 2 Insanity
+//--Sketch 2 [ Insanity ]
     int size = 310;
     int add = 1;
-    int min = 60;
-    int max = 380;
     int distanceLattice = 10;
     int latticeWeight = 1;
     int beginDie = 0;
 
 
-//--Sketch 3 [Placeholder]
+//--Sketch 3 [Nugget Meister]
+    PImage[] imgSeq = new PImage[6];
+    PImage nugget;
+    int index = 0;
+    boolean load = false;
 
 
 
@@ -53,7 +55,7 @@ void draw(){
 
 void menu()
 {
-    
+  noStroke();
   textAlign(RIGHT);
   fill(200,200,0);
   text("Keith Camacho",width-20,50);
@@ -132,7 +134,7 @@ void button(int x,int y,int w,int h,int fill,String text){
 //------------------------------------------
 void sketchA(){
   //Sketch 1 SS2_Delayed Color
-           
+  //Mouse over areas to have a box appear, click on the center box to change its color         
   //------------
   
   //shorten mousex and y for easier reference
@@ -140,7 +142,7 @@ void sketchA(){
     int y = mouseY;
     
     //set background and clear for update
-          clear();
+          clear();       
           background(55, 55, colorBack);
           
           
@@ -200,17 +202,20 @@ void sketchA(){
 
 void sketchB(){
 //--Sketch 2 SS3_Insanity
-//press o/p to increase/decrease size of eyeball
 //press spacebar to initiate resonance cascade
-
-  ss2Draw();
+  clear();
+  if(beginDie == 1){lattice();}
   exitButton();
 }
 
 //------------------------------------------
 
 void sketchC(){
+//--Sketch 3 SS4_Nugget Meister
+   setupC();
+   circleInsane(width/2, height/2);
 
+ // nugget();
   exitButton();
 }
 
@@ -231,7 +236,7 @@ void keyPressed(){
   if(state == 1){if (keyCode == 32) {colorBack = random(100)+ 150;} else {colorBack = 255;}}
  
   //Check if Sketch 2
-  if(state == 2){if (keyCode == 32) {if(beginDie == 0){beginDie = 1;} else{beginDie = 0;clear();}}
+  if(state == 2){if (keyCode == 32) {if(beginDie == 0){beginDie = 1;} else{beginDie = 0;strokeWeight(0);clear();}}
   
   //Check if Sketch 3
   
@@ -239,7 +244,7 @@ void keyPressed(){
   }
 }
 
-}
+
 
 void exitButton(){
 //exit button
@@ -249,6 +254,7 @@ void exitButton(){
                 //Button Pressed
                       button(20,20,50,50,100,"x");
                       state = 0;
+                      beginDie = 0;
                       
                 //if highlighted
                 }else{button(20,20,50,50,150,"x");}  
@@ -273,16 +279,8 @@ void exitButton(){
 
 
 //Sketch 2
-
-    void ss2Draw(){
     
-      
-      
-    }
-    
-
     void lattice(){
-    
       for (int i=0; i < width; i+=distanceLattice){    
           stroke(random(20)+100,0,0);
           strokeWeight(2+random(10));
@@ -295,17 +293,32 @@ void exitButton(){
       }
     }
     
-    void increaseCircle(){
-      if (size > max)
-      {
-        add = -1;
-      }
-      if (size < min)
-      {
-        add = 1;
-      }
-      size = size + add;
-  }
-
 
 //--
+
+//Sketch 3
+
+
+void setupC(){
+ if(load == false){ 
+     imgSeq[0] = loadImage("10001.png");
+     imgSeq[1] = loadImage("10002.png");
+     imgSeq[2] = loadImage("10003.png");
+     imgSeq[3] = loadImage("10004.png");
+     imgSeq[4] = loadImage("10005.png");
+     imgSeq[5] = loadImage("10006.png");
+     nugget = loadImage("nugget.jpg");
+     imageMode(CENTER);
+     load = true;     
+   }
+}
+
+
+void circleInsane(int a, int b){ 
+    
+    image(imgSeq[index],a,b);
+    index++;
+    if(index == 5){index = 0;}
+   }
+   
+void nugget(){}

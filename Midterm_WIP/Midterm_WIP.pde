@@ -25,6 +25,7 @@ int state = 0;
     PImage[] imgSeq = new PImage[6];
     PImage nugget;
     int index = 0;
+    float variance;
     boolean load = false;
 
 
@@ -195,6 +196,10 @@ void sketchA(){
            
   
   exitButton();
+  
+  fill(255);
+  text("Press Spacebar to change background.", width/2, 800);
+  text("Click on the center to change the center box color.", width/2, 830);
  
 }
 
@@ -206,6 +211,10 @@ void sketchB(){
   clear();
   if(beginDie == 1){lattice();}
   exitButton();
+  
+  fill(255);
+  text("Press Spacebar to begin the lattice.", width/2, 800);
+  text("Press again to end the lattice." , width/2, 830);
 }
 
 //------------------------------------------
@@ -213,15 +222,20 @@ void sketchB(){
 void sketchC(){
 //--Sketch 3 SS4_Nugget Meister
    setupC();
-   circleInsane(width/2, height/2);
-
- // nugget();
-  exitButton();
+   background(variance/4,0,0);
+   circleInsane((width/2)-300, height/2);
+   nugget(random(variance)+(width/2)-(variance/2), random(variance)+(height/2)-(variance/2));
+   exitButton();
+   
+   
+   
+   fill(255);
+   text("Press o/p keys to increase/decrease the nugget's rage",width/2, 800);
 }
 
 
 
-
+//-------------------------------------
 
 
 
@@ -236,13 +250,15 @@ void keyPressed(){
   if(state == 1){if (keyCode == 32) {colorBack = random(100)+ 150;} else {colorBack = 255;}}
  
   //Check if Sketch 2
-  if(state == 2){if (keyCode == 32) {if(beginDie == 0){beginDie = 1;} else{beginDie = 0;strokeWeight(0);clear();}}
+  if(state == 2){if (keyCode == 32) {if(beginDie == 0){beginDie = 1;} else{beginDie = 0;strokeWeight(0);clear();}}}
   
   //Check if Sketch 3
-  
+  if(state == 3){if (keyCode == 80) {size = size + 20;variance = variance + 50;}
+                 if (keyCode == 79) {size = size - 20;variance = variance - 50;}
+                 }
                  
   }
-}
+
 
 
 
@@ -255,6 +271,7 @@ void exitButton(){
                       button(20,20,50,50,100,"x");
                       state = 0;
                       beginDie = 0;
+                      variance = 0;
                       
                 //if highlighted
                 }else{button(20,20,50,50,150,"x");}  
@@ -310,15 +327,22 @@ void setupC(){
      nugget = loadImage("nugget.jpg");
      imageMode(CENTER);
      load = true;     
+     
    }
+   if(variance < 0){variance = 0;}
 }
 
 
 void circleInsane(int a, int b){ 
-    
+  
     image(imgSeq[index],a,b);
     index++;
     if(index == 5){index = 0;}
    }
    
-void nugget(){}
+void nugget(float c, float d){
+    image(nugget,c,d);
+    textSize(32);
+    textAlign(CENTER);
+    text("nugget",c,d+200);
+  }

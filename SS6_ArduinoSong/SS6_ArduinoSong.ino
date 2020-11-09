@@ -60,6 +60,15 @@ void debugTest(bool y){
   }
 }
 
+void debugSong(bool y, int i){
+  if(y){
+    Serial.print(i);
+    Serial.print(": ");
+    Serial.print(patternA[i]);
+    Serial.println();
+    }
+  }
+
 
 void song(){
   for(int i = 0; i < 128; i++){
@@ -94,14 +103,5 @@ void reset(){
     analogWrite(ledPinE, 0);
     delay(300);
     Serial.println(i);
-    }
-  }
-
-void debugSong(bool y, int i){
-  if(y){
-    Serial.print(i);
-    Serial.print(": ");
-    Serial.print(patternA[i]);
-    Serial.println();
     }
   }
